@@ -1,0 +1,19 @@
+{
+    "include": [
+        "./src/**/*"
+    ],
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "strict": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "module": "esnext",
+        "target": "esnext",
+        "lib": ["dom", "es2015", "esnext"],
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "typeRoots": ["./node_modules/@types", "./src/@types"],
+        "isolatedModules":false
+    }
+}
