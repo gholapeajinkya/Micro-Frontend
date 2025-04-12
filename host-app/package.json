@@ -37,7 +37,7 @@
   },
   "scripts": {
     "start": "cross-env PORT=3001 webpack serve",
-    "build": "webpack --config webpack.config.js --mode production",
+    "build": "cross-env PORT=3002  webpack",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
