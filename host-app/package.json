@@ -7,6 +7,7 @@
     "react",
     "starter"
   ],
+  "homepage": "https://gholapeajinkya.github.io/Micro-Frontend/host-app",
   "main": "src/index.tsx",
   "dependencies": {
     "loader-utils": "3.2.1",
@@ -31,13 +32,16 @@
     "webpack-merge": "^6.0.1",
     "css-loader": "^6.5.0",
     "style-loader": "^4.0.0",
-    "@types/react-router-dom": "^5.3.3"
+    "@types/react-router-dom": "^5.3.3",
+    "gh-pages": "^6.3.0"
   },
   "scripts": {
     "start": "cross-env PORT=3001 webpack serve",
     "build": "cross-env PORT=3001 webpack serve",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build -b gh-pages -r https://github.com/gholapeajinkya/Micro-Frontend.git"
   },
   "browserslist": [
     ">0.2%",

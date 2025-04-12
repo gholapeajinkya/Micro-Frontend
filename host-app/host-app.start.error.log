@@ -1,8 +1,0 @@
-<i> [webpack-dev-server] Project is running at:
-<i> [webpack-dev-server] Loopback: http://localhost:3001/, http://[::1]:3001/
-<i> [webpack-dev-server] On Your Network (IPv4): http://192.168.1.105:3001/
-<i> [webpack-dev-server] Content not from webpack is served from 'D:\Learnings\Micro-Frontends\host-app\public' directory
-<i> [webpack-dev-middleware] wait until bundle finished: /main.c035b8f8faf1b961e690.hot-update.json
-<i> [webpack-dev-middleware] wait until bundle finished: /main.js
-<i> [webpack-dev-middleware] wait until bundle finished: /main.926f44ed332b4682cf7c.hot-update.json
-<i> [webpack-dev-server] Gracefully shutting down. To force exit, press ^C again. Please wait...
