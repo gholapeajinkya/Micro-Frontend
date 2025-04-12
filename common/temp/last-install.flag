@@ -1,9 +1,0 @@
-{
-  "node": "18.18.1",
-  "packageManager": "pnpm",
-  "packageManagerVersion": "8.6.12",
-  "rushJsonFolder": "D:\\Learnings\\Micro-Frontends",
-  "npmrcHash": "ee68e6b827bdf7ec9525260572c6fe6f94909053",
-  "storePath": "D:\\Learnings\\Micro-Frontends\\common\\temp/pnpm-store",
-  "workspaces": true
-}
