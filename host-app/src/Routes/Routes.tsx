@@ -12,7 +12,7 @@ export const RoutesComponent = (props: any) => {
       <BrowserRouter  basename="/Micro-Frontend/host-app">
         <Routes>
           <Route path="/" element={<Navbar />} >
-            <Route index element={<Navigate to="/home" />} />
+            <Route index element={<Navigate to="/products" />} />
             <Route path='/home' element={<HomePage />} />
             <Route path='/products' element={<ProductsPage />} />
             <Route path='/cart' element={<CartPage />} />
