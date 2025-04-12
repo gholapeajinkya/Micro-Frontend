@@ -22,6 +22,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
+      filename: "404.html", // fallback for GitHub Pages routing
     }),
     new ModuleFederationPlugin({
       name: "hostApp",
