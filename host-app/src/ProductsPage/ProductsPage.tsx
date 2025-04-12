@@ -4,9 +4,9 @@ export const ProductsPage = () => {
   return (
     <div>
       Products Page
-      {/* <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading...</div>}>
         <MyProducts />
-      </Suspense> */}
+      </Suspense>
     </div>
   )
 }
