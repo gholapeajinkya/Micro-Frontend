@@ -11,8 +11,9 @@ Both apps are deployed on **GitHub Pages**.
 
 ## 🚀 Live Demos
 
+- **Remote App**: [Remote App](https://gholapeajinkya.github.io/Micro-Frontend/remote-app/)
 - **Host App**: [View Host App](https://gholapeajinkya.github.io/Micro-Frontend/host-app/)
-- **Remote App**: [Remote Entry File](https://gholapeajinkya.github.io/Micro-Frontend/remote-app/remoteEntry.js)
+
 
 ---
 
