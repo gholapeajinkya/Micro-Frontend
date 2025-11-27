@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import { HomePage } from '../HomePage/HomePage'
 import { ProductsPage } from '../ProductsPage/ProductsPage'
 import { CartPage } from '../CartPage/CartPage'
 import { NavLink, Outlet } from 'react-router-dom'
@@ -13,7 +12,6 @@ export const RoutesComponent = (props: any) => {
         <Routes>
           <Route path="/" element={<Navbar />} >
             <Route index element={<Navigate to="/products" />} />
-            <Route path='/home' element={<HomePage />} />
             <Route path='/products' element={<ProductsPage />} />
             <Route path='/cart' element={<CartPage />} />
           </Route>
