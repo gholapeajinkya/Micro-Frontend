@@ -9,7 +9,7 @@ import Navbar from '../Navbar'
 export const RoutesComponent = (props: any) => {
   return (
     <>
-      <BrowserRouter  basename="/Micro-Frontend/host-app">
+      <BrowserRouter basename="/Micro-Frontend/host-app">
         <Routes>
           <Route path="/" element={<Navbar />} >
             <Route index element={<Navigate to="/products" />} />
