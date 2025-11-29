@@ -1,20 +1,24 @@
 import React from 'react'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import { ProductsPage } from '../ProductsPage/ProductsPage'
-import { CartPage } from '../CartPage/CartPage'
-import { NavLink, Outlet } from 'react-router-dom'
-import Navbar from '../Navbar'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { LandingPage } from '../pages/landing/LandingPage'
+import { LoginPage } from '../pages/login/LoginPage'
+import { SignUpPage } from '../pages/signup/SignUpPage'
 
 export const RoutesComponent = (props: any) => {
+  const basename = process.env.NODE_ENV === 'production' 
+    ? '/Micro-Frontend/host-app' 
+    : '/';
+  
   return (
     <>
-      <BrowserRouter basename="/Micro-Frontend/host-app">
+      <BrowserRouter basename={basename}>
         <Routes>
-          <Route path="/" element={<Navbar />} >
-            <Route index element={<Navigate to="/products" />} />
-            <Route path='/products' element={<ProductsPage />} />
-            <Route path='/cart' element={<CartPage />} />
-          </Route>
+          <Route path="/" element={<LandingPage />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/signup' element={<SignUpPage />} />
+          {/* <Route index element={<Navigate to="/products" />} />
+          <Route path='/products' element={<ProductsPage />} />
+          <Route path='/cart' element={<CartPage />} /> */}
         </Routes>
       </BrowserRouter>
     </>

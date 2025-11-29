@@ -3,9 +3,14 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const { dependencies } = require("./package.json");
 const path = require("path");
 
+const isProduction = process.env.NODE_ENV === "production";
+const remoteAppUrl = isProduction
+  ? "https://gholapeajinkya.github.io/Micro-Frontend/remote-app/remoteEntry.js"
+  : "http://localhost:3002/remoteEntry.js";
+
 module.exports = {
   entry: "./src/index",
-  mode: "production",
+  mode: isProduction ? "production" : "development",
   devServer: {
     port: 3001,
     historyApiFallback: true,
@@ -16,7 +21,7 @@ module.exports = {
   output: {
     publicPath: "auto",
     filename: "[name].[contenthash].js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "../docs/host-app"),
     clean: true,
   },
   plugins: [
@@ -30,7 +35,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "hostApp",
       remotes: {
-        remoteApp: "remoteApp@https://gholapeajinkya.github.io/Micro-Frontend/remote-app/remoteEntry.js",
+        remoteApp: `remoteApp@${remoteAppUrl}`,
       },
       shared: {
         react: {
