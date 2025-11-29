@@ -2,6 +2,16 @@ interface MyProductsProps {
   products?: any[];
 }
 
+interface LoginProps {
+  onLogin?: (username: string, password: string) => void;
+  onSwitchToSignUp?: () => void;
+}
+
+
+interface SignUpProps {
+  onSignUp?: (username: string, email: string, password: string) => void;
+  onSwitchToLogin?: () => void;
+}
 
 declare module 'remoteApp/MyProducts' {
   const MyProducts: React.ComponentType<MyProductsProps>;
@@ -9,10 +19,15 @@ declare module 'remoteApp/MyProducts' {
 }
 
 declare module 'remoteApp/Login' {
-  const Login: React.ComponentType<Login>;
+  const Login: React.ComponentType<LoginProps>;
   export default Login;
 }
-declare module 'remoteApp/SignUp' {
-  const SignUp: React.ComponentType<SignUp>;
-  export default SignUp;
+declare module 'remoteApp/Signup' {
+  const Signup: React.ComponentType<SignUpProps>;
+  export default Signup;
+}
+
+declare module 'remoteApp/Landing' {
+  const Landing: React.ComponentType<any>;
+  export default Landing;
 }

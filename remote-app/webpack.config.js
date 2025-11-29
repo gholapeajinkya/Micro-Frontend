@@ -3,16 +3,24 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const { dependencies } = require("./package.json");
 const path = require("path");
 
+const isProduction = process.env.NODE_ENV === "production";
+const publicPath = isProduction
+  ? "auto"
+  : "http://localhost:3002/";
+
 module.exports = {
   entry: "./src/index",
-  mode: "production",
+  mode: isProduction ? "production" : "development",
   devServer: {
     port: 3002,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   },
   output: {
-    publicPath: "auto",
+    publicPath: publicPath,
     filename: "[name].[contenthash].js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "../docs/remote-app"),
     clean: true, // Cleans the output folder
   },
   module: {
@@ -47,7 +55,10 @@ module.exports = {
       name: "remoteApp",
       filename: "remoteEntry.js",
       exposes: {
-        "./MyProducts": "./src/MyProducts", // Exposing a component
+        "./Landing": "./src/components/landing/Landing",
+        "./Login": "./src/components/login/Login",
+        "./Signup": "./src/components/signup/SignUp",
+        "./MyProducts": "./src/components/products/MyProducts", // Exposing a component
       },
       shared: {
         react: {

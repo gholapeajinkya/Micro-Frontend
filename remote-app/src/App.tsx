@@ -1,31 +1,40 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import Landing from "./components/landing/Landing";
+import MyProducts from "./components/products/MyProducts";
 import "./styles.css";
-import MyProducts from "./MyProducts";
-import AuthContainer from "./AuthContainer";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
+  const [showLanding, setShowLanding] = useState(true);
 
   const handleLogin = (username: string, password: string) => {
     // Simple login simulation - in real app, you'd validate with backend
     if (username && password) {
       setIsLoggedIn(true);
       setCurrentUser(username);
+      setShowLanding(false);
     }
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
     setCurrentUser("");
+    setShowLanding(true);
     // Clear stored auth token
     localStorage.removeItem('authToken');
   };
 
-  if (!isLoggedIn) {
-    return <AuthContainer onLogin={handleLogin} />;
+  const handleGetStarted = () => {
+    setShowLanding(false);
+  };
+
+  // Show landing page first
+  if (showLanding && !isLoggedIn) {
+    return <Landing onLogin={handleGetStarted} />;
   }
 
+  // Show main app when logged in
   return (
     <div className="App">
       <div className="app-header">
