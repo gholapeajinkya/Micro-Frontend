@@ -287,7 +287,7 @@ export default function Landing({ onLogin, onBrowser }: LandingProps) {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2025 ShopHub. All rights reserved.</p>
+            <p>&copy; 2025 BuyNest. All rights reserved.</p>
           </div>
         </div>
       </footer>
