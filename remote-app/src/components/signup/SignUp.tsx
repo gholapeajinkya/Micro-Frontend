@@ -4,13 +4,14 @@ import "../../styles.css";
 interface SignUpProps {
   onSignUp?: (username: string, email: string, password: string) => void;
   onSwitchToLogin?: () => void;
+  goToHome?: () => void;
 }
 
 const SignUp = (props: SignUpProps) => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [username, setUsername] = useState("johndoe");
+  const [email, setEmail] = useState("johndoe@buynest.com");
+  const [password, setPassword] = useState("12345678");
+  const [confirmPassword, setConfirmPassword] = useState("12345678");
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -139,7 +140,7 @@ const SignUp = (props: SignUpProps) => {
       
       <div className="login-card signup-card">
         <div className="login-header">
-          <div className="login-logo">
+          <div className="login-logo" onClick={props.goToHome} style={{ cursor: 'pointer' }}>
             <div className="logo-icon">🚀</div>
           </div>
           <h1 className="login-title">Create Account</h1>

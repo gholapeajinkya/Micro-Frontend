@@ -134,6 +134,18 @@ h1 {
   transform: rotate(15deg) scale(1.2);
 }
 
+.logout-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.logout-button:hover {
+  border: 2px solid white !important;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar {

@@ -9,7 +9,11 @@ export const SignUpPage = () => {
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
-        <SignUpComponent onSwitchToLogin={onSwitchToLogin} />
+        <SignUpComponent 
+          onSignUp={onSwitchToLogin}
+          onSwitchToLogin={onSwitchToLogin} 
+          goToHome={() => navigate("/")}
+        />
       </Suspense>
     </div>
   )

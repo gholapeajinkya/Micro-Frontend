@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import "../../styles.css";
 
 interface LoginProps {
-  onLogin?: (username: string, password: string) => void;
+  onLogin?: (username: string, password: string) => Promise<void>;
   onSwitchToSignUp?: () => void;
+  goToHome?: () => void;
 }
 
 const Login = (props: LoginProps) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("johndoe@buynest.com");
+  const [password, setPassword] = useState("12345678");
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({ username: "", password: "" });
@@ -16,66 +17,33 @@ const Login = (props: LoginProps) => {
 
   const validateForm = () => {
     const newErrors = { username: "", password: "" };
-    
+
     if (!username.trim()) {
       newErrors.username = "Username is required";
     } else if (username.length < 3) {
       newErrors.username = "Username must be at least 3 characters";
     }
-    
+
     if (!password.trim()) {
       newErrors.password = "Password is required";
     } else if (password.length < 6) {
       newErrors.password = "Password must be at least 6 characters";
     }
-    
+
     setErrors(newErrors);
     return !newErrors.username && !newErrors.password;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     setIsLoading(true);
     setLoginError("");
-    
-    try {
-      // Call FakeStore API for authentication
-      const response = await fetch('https://fakestoreapi.com/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.token) {
-        // Login successful
-        console.log("Login successful:", data);
-        
-        if (props.onLogin) {
-          props.onLogin(username, password);
-        }
-        
-        // You can store the token for future API calls
-        localStorage.setItem('authToken', data.token);
-      } else {
-        // Login failed
-        setLoginError("Invalid username or password");
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      setLoginError("Network error. Please try again.");
-    }
-    
-    setIsLoading(false);
+    props.onLogin?.(username, password).finally(() => {
+      setIsLoading(false);
+    });
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -101,10 +69,10 @@ const Login = (props: LoginProps) => {
           <div className="shape shape-3"></div>
         </div>
       </div>
-      
+
       <div className="login-card">
         <div className="login-header">
-          <div className="login-logo">
+          <div className="login-logo" onClick={props.goToHome} style={{ cursor: 'pointer' }}>
             <div className="logo-icon">🔐</div>
           </div>
           <h1 className="login-title">Welcome Back</h1>
@@ -192,7 +160,7 @@ const Login = (props: LoginProps) => {
         <div className="login-footer">
           <p className="signup-text">
             Don't have an account?{" "}
-            <button 
+            <button
               type="button"
               className="signup-link"
               onClick={props.onSwitchToSignUp}
