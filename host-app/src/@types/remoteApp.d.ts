@@ -5,12 +5,19 @@ interface MyProductsProps {
 interface LoginProps {
   onLogin?: (username: string, password: string) => void;
   onSwitchToSignUp?: () => void;
+  goToHome?: () => void;
 }
 
 
 interface SignUpProps {
   onSignUp?: (username: string, email: string, password: string) => void;
   onSwitchToLogin?: () => void;
+  goToHome?: () => void;
+}
+
+interface LandingProps {
+  onLogin?: () => void;
+  onBrowser?: (category: string) => void;
 }
 
 declare module 'remoteApp/MyProducts' {
@@ -28,6 +35,6 @@ declare module 'remoteApp/Signup' {
 }
 
 declare module 'remoteApp/Landing' {
-  const Landing: React.ComponentType<any>;
+  const Landing: React.ComponentType<LandingProps>;
   export default Landing;
 }

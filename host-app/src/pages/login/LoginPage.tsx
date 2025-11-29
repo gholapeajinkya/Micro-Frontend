@@ -6,10 +6,27 @@ export const LoginPage = () => {
   const onSwitchToSignUp = () => {
     navigate("/signup");
   };
+
+  const onLogin = async (username: string, password: string) => {
+
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        // Simulate storing an auth token
+        localStorage.setItem('authToken', 'dummy-token');
+        resolve();
+        navigate("/app/products");
+      }, 1000);
+    });
+  };
+
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
-        <LoginComponent onSwitchToSignUp={onSwitchToSignUp} />
+        <LoginComponent
+          onLogin={onLogin}
+          onSwitchToSignUp={onSwitchToSignUp}
+          goToHome={() => navigate("/")}
+        />
       </Suspense>
     </div>
   )

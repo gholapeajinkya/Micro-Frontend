@@ -7,7 +7,9 @@ export const LandingPage = () => {
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
-        <LandingPageComponent onLogin={() => navigate('/login')} />
+        <LandingPageComponent 
+          onBrowser={() => navigate("/app/products")}
+          onLogin={() => navigate('/login')} />
       </Suspense>
     </div>
   )

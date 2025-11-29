@@ -3,9 +3,10 @@ import "./landing.css";
 
 interface LandingProps {
   onLogin?: () => void;
+  onBrowser?: (category: string) => void;
 }
 
-export default function Landing({ onLogin }: LandingProps) {
+export default function Landing({ onLogin, onBrowser }: LandingProps) {
   const features = [
     {
       icon: "🚚",
@@ -90,9 +91,13 @@ export default function Landing({ onLogin }: LandingProps) {
           <div className="hero-shape hero-shape-3"></div>
         </div>
         <div className="hero-content">
+          <h1 className="app-title">
+            <span className="title-icon">🛒</span>
+            Buy<span className="title-highlight">Nest</span>
+          </h1>
           <div className="hero-badge">
             <span className="badge-icon">✨</span>
-            <span>Welcome to Premium Shopping</span>
+            <span>Your Premium Shopping Destination</span>
           </div>
           <h1 className="hero-title">
             Discover Amazing
@@ -165,7 +170,7 @@ export default function Landing({ onLogin }: LandingProps) {
                   <h3 className="category-name">{category.name}</h3>
                   <p className="category-count">{category.count}</p>
                 </div>
-                <button className="category-button">
+                <button className="category-button" onClick={() => onBrowser?.(category.name)}>
                   Browse →
                 </button>
               </div>
@@ -247,7 +252,7 @@ export default function Landing({ onLogin }: LandingProps) {
         <div className="container">
           <div className="footer-content">
             <div className="footer-section">
-              <h3 className="footer-title">ShopHub</h3>
+              <h3 className="footer-title">BuyNest</h3>
               <p className="footer-description">
                 Your trusted online shopping destination for quality products at
                 amazing prices.

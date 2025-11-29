@@ -80,6 +80,77 @@
   animation: heroFadeIn 1s ease-out;
 }
 
+.app-title {
+  font-size: 4.5rem;
+  font-weight: 900;
+  margin: 0 0 20px 0;
+  letter-spacing: -2px;
+  color: white;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  animation: titleSlideUp 0.8s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.title-icon {
+  font-size: 4rem;
+  animation: titleIconBounce 2s ease-in-out infinite;
+}
+
+@keyframes titleIconBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+}
+
+.title-highlight {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: titleShine 3s linear infinite;
+  position: relative;
+  display: inline-block;
+}
+
+.title-highlight::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #ffd700, transparent);
+  border-radius: 2px;
+  animation: underlineExpand 2s ease-in-out infinite;
+}
+
+@keyframes titleShine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes underlineExpand {
+  0%, 100% {
+    transform: scaleX(0.5);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
 @keyframes heroFadeIn {
   from {
     opacity: 0;
@@ -97,9 +168,9 @@
   gap: 8px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 50px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   margin-bottom: 24px;
   border: 1px solid rgba(255, 255, 255, 0.3);

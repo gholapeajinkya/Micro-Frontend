@@ -8,15 +8,6 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [showLanding, setShowLanding] = useState(true);
 
-  const handleLogin = (username: string, password: string) => {
-    // Simple login simulation - in real app, you'd validate with backend
-    if (username && password) {
-      setIsLoggedIn(true);
-      setCurrentUser(username);
-      setShowLanding(false);
-    }
-  };
-
   const handleLogout = () => {
     setIsLoggedIn(false);
     setCurrentUser("");
